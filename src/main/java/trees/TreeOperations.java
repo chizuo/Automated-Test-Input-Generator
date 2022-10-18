@@ -43,10 +43,6 @@ public class TreeOperations {
     }
 
     public static <A> int nodeCount(Node<A> root) {
-        ArrayList<A> preorderList = preorder(root);
-        ArrayList<A> bfsList = bfs(root);
-        int preOrderCount = preorderList.size();
-        int bfsCount = bfsList.size();
-        return preOrderCount == bfsCount ? bfsCount : -1;
+        return bfs(root).size();
     }
 }

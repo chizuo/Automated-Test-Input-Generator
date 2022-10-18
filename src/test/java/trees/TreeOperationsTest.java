@@ -14,10 +14,20 @@ public class TreeOperationsTest {
     int maxDepth = 1;
     ArrayList<Node<String>> treeList = new ArrayList<Node<String>>();;
     ArrayList<String> BFSexpects = new ArrayList<String>();
+    ArrayList<String> PreOrderExpects = new ArrayList<String>();
+
+    public void recursivePreOrder(Node<String> node) {
+        if (node == null)
+            return;
+        PreOrderExpects.add(node.contents);
+        recursivePreOrder(node.left);
+        recursivePreOrder(node.right);
+        return;
+    }
 
     @Before
     public void automatedTestCaseGenerator() {
-        maxNodes = (int) (Math.random() * 100) + 10;
+        maxNodes = (int) (Math.random() * 1000) + 10;
         for (int i = 0; i < maxNodes; i++) {
             treeList.add(new Node<String>(Integer.toString(i + 1), null, null));
         }
@@ -38,6 +48,11 @@ public class TreeOperationsTest {
             i /= 2;
         }
 
+        /*
+         * recursive pre-order to get expected pre-order list for TreeOperations
+         * preorder method
+         */
+        recursivePreOrder(treeList.get(0));
     }
 
     @Test
@@ -47,10 +62,8 @@ public class TreeOperationsTest {
 
     @Test
     public void TestPreOrder() {
-        assertTrue(TreeOperations.bfs(treeList.get(0)) != TreeOperations.preorder(treeList.get(0)));
-        assertEquals(TreeOperations.preorder(treeList.get(1)), new TreeOperations().preorder(treeList.get(0).left));
-        assertEquals(TreeOperations.preorder(treeList.get(2)), new TreeOperations().preorder(treeList.get(0).right));
-        assertEquals(TreeOperations.preorder(treeList.get(0)), new TreeOperations().preorder(treeList.get(0)));
+        assertEquals(new TreeOperations().preorder(treeList.get(0)), PreOrderExpects);
+        assertEquals(TreeOperations.preorder(treeList.get(0)), PreOrderExpects);
     }
 
     @Test

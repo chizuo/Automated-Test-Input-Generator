@@ -4,11 +4,11 @@
   - [x] `public static <A> ArrayList<A> bfs(Node<A> root)` : returns the items in the tree in a bfs lr order.
   - [x] `public static <A> ArrayList<A> preorder(Node<A> root)` : returns the items in the tree in a lr pre-order.
   - [x] `public static <A> int maxDepth(Node<A> root)` : return the maximum depth of the binary tree.
-  - [ ] `public static <A> int nodeCount(Node <A> root)` : return the number of nodes in a given tree.
+  - [X] `public static <A> int nodeCount(Node <A> root)` : return the number of nodes in a given tree.
 - Write an automated test case generator for one of the four methods implemented in `class TreeOperations` in TreeOperationsTest.java
-  - [ ] Automated test case generator for `public static <A> ArrayList<A> bfs(Node<A> root)`
-  - [ ] Automated test case generator for `public static <A> ArrayList<A> preorder(Node<A> root)`
-  - [ ] Automated test case generator for `public static <A> int maxDepth(Node<A> root)`
-  - [ ] Automated test case generator for `public static <A> int nodeCount(Node <A> root)`
-- Achieve a minimum of 100% code coverage for the method being tested by your automated test case generator.
-  - [ ] Achieve a minimum of 100% code coverage for the method being tested by your automated test case generator.
+  - [X] Automated test case generator for `public static <A> ArrayList<A> bfs(Node<A> root)`
+  - [X] Automated test case generator for `public static <A> ArrayList<A> preorder(Node<A> root)`
+  - [X] Automated test case generator for `public static <A> int maxDepth(Node<A> root)`
+  - [X] Automated test case generator for `public static <A> int nodeCount(Node <A> root)`
+- [x] Achieve a minimum of 100% code coverage for the methods being tested by your automated test case generator.
+- [X] Achieve a minimum of 90% mutant kill rate for the methods being tested by your automated test case generator during mutation analysis.
