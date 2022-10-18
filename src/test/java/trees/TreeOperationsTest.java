@@ -1,7 +1,6 @@
 package trees;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,10 +47,7 @@ public class TreeOperationsTest {
             i /= 2;
         }
 
-        /*
-         * recursive pre-order to get expected pre-order list for TreeOperations
-         * preorder method
-         */
+        /* recursive preorder to get preorder list for TreeOperations preorder method */
         recursivePreOrder(treeList.get(0));
     }
 
