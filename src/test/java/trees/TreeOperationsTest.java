@@ -7,13 +7,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.lang.Integer;
 import org.junit.Test;
+import org.junit.Before;
 
 public class TreeOperationsTest {
     int maxNodes;
-    int maxDepth;
+    int maxDepth = 1;
     ArrayList<Node<String>> treeList = new ArrayList<Node<String>>();;
     ArrayList<String> BFSexpects = new ArrayList<String>();
 
+    @Before
     public void automatedTestCaseGenerator() {
         maxNodes = (int) (Math.random() * 100) + 10;
         for (int i = 0; i < maxNodes; i++) {
@@ -30,11 +32,34 @@ public class TreeOperationsTest {
             parent.right = right < treeList.size() ? treeList.get(right) : null;
             BFSexpects.add(parent.contents);
         }
+
+        /* calculates maxDepth of a full tree by dividing until it reaches root */
+        for (int i = maxNodes; i > 1; maxDepth++) {
+            i /= 2;
+        }
+
     }
 
     @Test
-    public void TestBreadthFirstSearchCorrectness() {
-        automatedTestCaseGenerator();
+    public void TestBreadthFirstSearch() {
         assertEquals(TreeOperations.bfs(treeList.get(0)), BFSexpects);
+    }
+
+    @Test
+    public void TestPreOrder() {
+        assertTrue(TreeOperations.bfs(treeList.get(0)) != TreeOperations.preorder(treeList.get(0)));
+        assertEquals(TreeOperations.preorder(treeList.get(1)), new TreeOperations().preorder(treeList.get(0).left));
+        assertEquals(TreeOperations.preorder(treeList.get(2)), new TreeOperations().preorder(treeList.get(0).right));
+        assertEquals(TreeOperations.preorder(treeList.get(0)), new TreeOperations().preorder(treeList.get(0)));
+    }
+
+    @Test
+    public void TestMaxDepth() {
+        assertEquals(TreeOperations.maxDepth(treeList.get(0)), maxDepth);
+    }
+
+    @Test
+    public void TestNodeCounter() {
+        assertEquals(TreeOperations.nodeCount(treeList.get(0)), maxNodes);
     }
 }
