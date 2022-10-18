@@ -10,5 +10,6 @@
   - [X] Automated test case generator for `public static <A> ArrayList<A> preorder(Node<A> root)`
   - [X] Automated test case generator for `public static <A> int maxDepth(Node<A> root)`
   - [X] Automated test case generator for `public static <A> int nodeCount(Node <A> root)`
-- [x] Achieve a minimum of 100% code coverage for the methods being tested by your automated test case generator.
-- [X] Achieve a minimum of 90% mutant kill rate for the methods being tested by your automated test case generator during mutation analysis.
+- Measures of effectiveness
+  - [x] Achieve a minimum of 100% code coverage for the methods being tested by your automated test case generator.
+  - [X] Achieve a minimum of 90% mutant kill rate for the methods being tested by your automated test case generator during mutation analysis.
