@@ -42,7 +42,11 @@ public class TreeOperations {
         return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 
-    public static <A> int nodeCount() {
-        return 0;
+    public static <A> int nodeCount(Node<A> root) {
+        ArrayList<A> preorderList = preorder(root);
+        ArrayList<A> bfsList = bfs(root);
+        int preOrderCount = preorderList.size();
+        int bfsCount = bfsList.size();
+        return preOrderCount == bfsCount ? bfsCount : -1;
     }
 }
