@@ -41,4 +41,8 @@ public class TreeOperations {
             return 0;
         return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
+
+    public static <A> int nodeCount() {
+        return 0;
+    }
 }
