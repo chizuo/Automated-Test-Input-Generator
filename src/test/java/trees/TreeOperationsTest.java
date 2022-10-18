@@ -47,7 +47,7 @@ public class TreeOperationsTest {
             i /= 2;
         }
 
-        /* recursive preorder to get preorder list for TreeOperations preorder method */
+        /* recursive preorder to assert against TreeOperations preorder method */
         recursivePreOrder(treeList.get(0));
     }
 
