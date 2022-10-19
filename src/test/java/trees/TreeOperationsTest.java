@@ -9,30 +9,35 @@ import org.junit.Test;
 import org.junit.Before;
 
 public class TreeOperationsTest {
-    int maxNodes;
+    int maxNodes = (int) (Math.random() * 1000) + 10;
     int maxDepth = 1;
-    ArrayList<Node<String>> treeList = new ArrayList<Node<String>>();;
+    ArrayList<String> uniqueContent = new ArrayList<String>();
+    ArrayList<Node<String>> treeList = new ArrayList<Node<String>>();
     ArrayList<String> BFSexpects = new ArrayList<String>();
     ArrayList<String> PreOrderExpects = new ArrayList<String>();
+    Node<String> root;
 
-    public void recursivePreOrder(Node<String> node) {
-        if (node == null)
-            return;
-        PreOrderExpects.add(node.contents);
-        recursivePreOrder(node.left);
-        recursivePreOrder(node.right);
-        return;
+    @Before
+    public void automatedContentGenerator() {
+        for (int i = 0; i < maxNodes; i++) {
+            uniqueContent.add(Integer.toString(i + 1));
+            treeList.add(new Node<String>(Integer.toString(i + 1), null, null));
+        }
+        Collections.shuffle(uniqueContent);
+        Collections.shuffle(treeList);
     }
 
     @Before
-    public void automatedTestCaseGenerator() {
-        maxNodes = (int) (Math.random() * 1000) + 10;
-        for (int i = 0; i < maxNodes; i++) {
-            treeList.add(new Node<String>(Integer.toString(i + 1), null, null));
+    public void automatedTestCaseGeneratorMaxDepth() {
+        /* Calculates max depth by doing a level order traversal btt until root level */
+        for (int i = maxNodes; i > 1; maxDepth++) {
+            i /= 2;
         }
-        Collections.shuffle(treeList);
+    }
 
-        /* builds the binary tree & the expected order for BFS */
+    @Before
+    public void automatedTestCaseGeneratorBFS() {
+        /* builds the binary tree & the expected order for BFS traversal */
         for (int i = 0; i < treeList.size(); i++) {
             int left = 2 * i + 1;
             int right = 2 * i + 2;
@@ -41,14 +46,22 @@ public class TreeOperationsTest {
             parent.right = right < treeList.size() ? treeList.get(right) : null;
             BFSexpects.add(parent.contents);
         }
+    }
 
-        /* calculates maxDepth of a full tree by dividing until it reaches root */
-        for (int i = maxNodes; i > 1; maxDepth++) {
-            i /= 2;
-        }
+    public void automatedTestCaseGeneratorPreOrder() {
+        /* builds the binary tree & expected order for pre-order traversal */
+        root = recursiveTreeBuilder(0);
+    }
 
-        /* recursive preorder to assert against TreeOperations preorder method */
-        recursivePreOrder(treeList.get(0));
+    public Node<String> recursiveTreeBuilder(int depth) {
+        if (uniqueContent.size() == 0 || depth == maxDepth)
+            return null;
+        String content = uniqueContent.get(0);
+        uniqueContent.remove(0);
+        PreOrderExpects.add(content);
+        Node<String> node = new Node<String>(content, recursiveTreeBuilder(depth + 1),
+                recursiveTreeBuilder(depth + 1));
+        return node;
     }
 
     @Test
@@ -58,8 +71,9 @@ public class TreeOperationsTest {
 
     @Test
     public void TestPreOrder() {
-        assertEquals(new TreeOperations().preorder(treeList.get(0)), PreOrderExpects);
-        assertEquals(TreeOperations.preorder(treeList.get(0)), PreOrderExpects);
+        automatedTestCaseGeneratorPreOrder();
+        assertEquals(PreOrderExpects, TreeOperations.preorder(root));
+        assertEquals(PreOrderExpects, new TreeOperations().preorder(root));
     }
 
     @Test
