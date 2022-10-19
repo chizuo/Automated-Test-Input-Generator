@@ -13,3 +13,7 @@
 - Measures of effectiveness
   - [x] Achieve a minimum of 100% code coverage for the methods being tested by your automated test case generator.
   - [X] Achieve a minimum of 90% mutant kill rate for the methods being tested by your automated test case generator during mutation analysis.
+<br>
+  ![alt text](https://github.com/chizuo/COMP587-HW3/blob/main/Assignment3.gif)
+  <br>
+  ![alt text](https://github.com/chizuo/COMP587-HW3/blob/main/coverage_mutation.gif)
