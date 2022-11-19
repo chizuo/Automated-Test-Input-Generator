@@ -1,4 +1,4 @@
-# COMP587-Automated Test Input Generation
+# Automated Test Input Generation
 ### Requirements
 - Implement the methods for `class TreeOperations` in TreeOperations.java while using `class Node` in Node.java as the class definition of the vertices in the tree being evaluated by:
   - [x] `public static <A> ArrayList<A> bfs(Node<A> root)` : returns the items in the tree in a bfs LR order.
